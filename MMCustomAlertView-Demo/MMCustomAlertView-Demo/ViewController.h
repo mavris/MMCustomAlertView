@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MMCustomAlertView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<MMCustomAlertViewDelegate>
+
 
 
 @end

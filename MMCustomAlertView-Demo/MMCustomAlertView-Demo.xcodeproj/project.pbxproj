@@ -14,6 +14,7 @@
 		277A8C2D1AC5FE0800DBF2A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 277A8C2C1AC5FE0800DBF2A0 /* Images.xcassets */; };
 		277A8C301AC5FE0800DBF2A0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277A8C2E1AC5FE0800DBF2A0 /* LaunchScreen.xib */; };
 		277A8C3C1AC5FE0900DBF2A0 /* MMCustomAlertView_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A8C3B1AC5FE0900DBF2A0 /* MMCustomAlertView_DemoTests.m */; };
+		277A8C471AC5FF3B00DBF2A0 /* MMCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277A8C461AC5FF3B00DBF2A0 /* MMCustomAlertView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		277A8C351AC5FE0900DBF2A0 /* MMCustomAlertView-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MMCustomAlertView-DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		277A8C3A1AC5FE0900DBF2A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		277A8C3B1AC5FE0900DBF2A0 /* MMCustomAlertView_DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMCustomAlertView_DemoTests.m; sourceTree = "<group>"; };
+		277A8C451AC5FF3B00DBF2A0 /* MMCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMCustomAlertView.h; path = ../../MMCustomAlertView.h; sourceTree = "<group>"; };
+		277A8C461AC5FF3B00DBF2A0 /* MMCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMCustomAlertView.m; path = ../../MMCustomAlertView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,8 @@
 		277A8C1E1AC5FE0800DBF2A0 /* MMCustomAlertView-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				277A8C451AC5FF3B00DBF2A0 /* MMCustomAlertView.h */,
+				277A8C461AC5FF3B00DBF2A0 /* MMCustomAlertView.m */,
 				277A8C231AC5FE0800DBF2A0 /* AppDelegate.h */,
 				277A8C241AC5FE0800DBF2A0 /* AppDelegate.m */,
 				277A8C261AC5FE0800DBF2A0 /* ViewController.h */,
@@ -221,6 +226,7 @@
 			files = (
 				277A8C281AC5FE0800DBF2A0 /* ViewController.m in Sources */,
 				277A8C251AC5FE0800DBF2A0 /* AppDelegate.m in Sources */,
+				277A8C471AC5FF3B00DBF2A0 /* MMCustomAlertView.m in Sources */,
 				277A8C221AC5FE0800DBF2A0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +418,7 @@
 				277A8C411AC5FE0900DBF2A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		277A8C421AC5FE0900DBF2A0 /* Build configuration list for PBXNativeTarget "MMCustomAlertView-DemoTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +427,7 @@
 				277A8C441AC5FE0900DBF2A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -24,4 +24,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)buttonPressed:(id)sender {
+    
+    MMCustomAlertView *alert = [[MMCustomAlertView alloc] initWithMessage:@"Hi there" backgroundColor:[UIColor blackColor] textColor:[UIColor blueColor] viewAlpha:0.9 animated:YES andDelegate:self];
+    [self.view addSubview:alert];
+}
+-(void)MMCustomAlertViewOKButtonDelegate{
+    
+    //Do something after OK button pressed
+    NSLog(@"OK button pressed");
+}
+
+
 @end
