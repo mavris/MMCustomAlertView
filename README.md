@@ -20,7 +20,7 @@ MMCuctomAlertView is customized full screen AlertView with flat design!
 Import the class in your class:
 
 ```
-	#import "MMCustomAlertView.h"
+#import "MMCustomAlertView.h"
 ```
 
 Set your class as delegate of MMCustomAlertView
@@ -60,14 +60,13 @@ You can also customize the background color,the text color, the alpha of the vie
     MMCustomAlertView *alert = [[MMCustomAlertView alloc] initWithMessage:@"Hi there" backgroundColor:[UIColor blackColor] textColor:[UIColor blueColor] viewAlpha:0.8 animated:YES andDelegate:nil];
     [self.view addSubview:alert];
 }
-
 ```
 
-### Authors
+###Authors
 
 * Michael Mavris
 
-### License
+###License
 
 Copyright Miksoft 2015
 
