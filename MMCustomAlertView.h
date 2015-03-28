@@ -19,12 +19,15 @@
 //===========
 
 
-@interface MMCustomAlertView : UIView
+@interface MMCustomAlertView : UIView{
+
+    BOOL isAlertAnimated;
+}
 
 @property (nonatomic, assign) id <MMCustomAlertViewDelegate> delegate;
 @property (nonatomic, strong) UILabel *msgLabel;
 @property (nonatomic, strong) UIButton *okButton;
-
+@property (nonatomic, strong) UIImageView *backgroundImageView;
 
 -(id)initWithMessage:(NSString*)msg andDelegate:(id <MMCustomAlertViewDelegate>)del;
 -(id)initWithMessage:(NSString*)msg backgroundColor:(UIColor*)backgroundColor textColor:(UIColor*)textColor viewAlpha:(float)alpha animated:(BOOL)isAnimated andDelegate:(id<MMCustomAlertViewDelegate>)del;

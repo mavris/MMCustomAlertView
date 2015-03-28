@@ -17,12 +17,22 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s07-ev-aV5">
-                                <rect key="frame" x="214" y="291" width="111" height="30"/>
-                                <state key="normal" title="Show Alert">
+                                <rect key="frame" x="159" y="291" width="155" height="30"/>
+                                <state key="normal" title="Show default Alert">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Iq1-Vy-WRv"/>
+                                    <action selector="showDefaultAlert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cxi-IV-zga"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQr-mM-Bbf">
+                                <rect key="frame" x="171" y="329" width="139" height="30"/>
+                                <state key="normal" title="Show Custom Alert">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="o7t-yF-xHT"/>
+                                    <action selector="showCustomAlert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="j1s-Wy-Q5i"/>
                                 </connections>
                             </button>
                         </subviews>

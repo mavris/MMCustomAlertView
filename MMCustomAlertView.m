@@ -1,6 +1,5 @@
 //
-//  UICustomAlertView.m
-//  MovieOracle
+//  MMCustomAlertView.m
 //
 //  Created by Michalis Mavris on 04/10/14.
 //  Copyright (c) 2014 miksoft.net. All rights reserved.
@@ -9,7 +8,7 @@
 #import "MMCustomAlertView.h"
 
 @implementation MMCustomAlertView
-@synthesize msgLabel,okButton,delegate;
+@synthesize msgLabel,okButton,backgroundImageView,delegate;
 
 -(id)initWithMessage:(NSString*)msg andDelegate:(id<MMCustomAlertViewDelegate>)del{
     
@@ -19,26 +18,29 @@
         
         self.delegate=del;
         
-        self.backgroundColor = [UIColor blackColor];
+        isAlertAnimated=YES;
+
         self.alpha=0;
-       
+        self.backgroundColor = [UIColor blackColor];
+
         [self addSubview:self.msgLabel];
         [self addSubview:self.okButton];
         
         msgLabel.text=msg;
+        msgLabel.textColor=[UIColor whiteColor];
         
+        okButton.tintColor=[UIColor whiteColor];
+
         [self setupConstraints];
         
     }
     
     //animate the alpha of View
-    [UIView animateWithDuration:0.3 animations:^{
-        
-        self.alpha=0.9;
-    }
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                                    self.alpha=0.9;
+                                  }
                      completion:^(BOOL finished){}];
-    
-
     
     return self;
 }
@@ -51,13 +53,18 @@
         
         self.delegate=del;
         
-        self.backgroundColor = backgroundColor;
+        isAlertAnimated=isAnimated;
+        
         self.alpha=0;
         
+        self.backgroundColor = backgroundColor;
+
+       
         [self addSubview:self.msgLabel];
         [self addSubview:self.okButton];
         
         msgLabel.textColor=textColor;
+       
         msgLabel.text=msg;
         
         okButton.tintColor =textColor;
@@ -66,23 +73,24 @@
         
     }
     
-    if (isAnimated) {
+    //check if the user want to animate the Alert View
+    if (isAlertAnimated) {
         
-        //animate the alpha of View
-        [UIView animateWithDuration:0.3 animations:^{
-                                                     self.alpha=alpha;
-                                                    }
-                                                    completion:^(BOOL finished){}];
+        //Animate the alpha of View
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                                        self.alpha=alpha;
+                                     }
+                        completion:^(BOOL finished){}];
     }
     else{
     
-        self.alpha=alpha;
+            self.alpha=alpha;
     }
     
     
     return self;
 }
-
 
 - (UILabel *)msgLabel {
     
@@ -120,23 +128,36 @@
 
 -(void)buttonClicked{
 
-    //animate the alpha of View
-    [UIView animateWithDuration:0.3 animations:^{
+   
+    
+    if (isAlertAnimated) {
+        //Animate, removing the alpha of View and call delegate
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.alpha=0;
+                         }
+                         completion:^(BOOL finished){
+                             [self removeFromSuperview];
+                             [delegate MMCustomAlertViewOKButtonDelegate];
+                         }];
+
         
-        self.alpha=0;
     }
-                     completion:^(BOOL finished){
-                     
-                         [self removeFromSuperview];
-                         [delegate MMCustomAlertViewOKButtonDelegate];
-                     
-                     }];
+    else{
+        //Removing the alpha of View and call delegate
+        [self removeFromSuperview];
+        [delegate MMCustomAlertViewOKButtonDelegate];
+    
+    }
     
     
 }
 
 - (void)setupConstraints{
     
+    
+    
+    //msgLabel constraints
     // Width constraint
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.msgLabel
                                                      attribute:NSLayoutAttributeWidth
@@ -176,8 +197,7 @@
     
     
     
-    
-    
+    //okButton constraints
     // Width constraint
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.okButton
                                                      attribute:NSLayoutAttributeWidth
@@ -213,6 +233,7 @@
                                                     multiplier:1.0
                                                       constant:0.0]];
     
+
     
 }
 

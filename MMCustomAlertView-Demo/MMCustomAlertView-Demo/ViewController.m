@@ -23,11 +23,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)showDefaultAlert:(id)sender {
+    
+    MMCustomAlertView *alert = [[MMCustomAlertView alloc]initWithMessage:@"Hi there" andDelegate:self];
+    [self.view addSubview:alert];
+}
+- (IBAction)showCustomAlert:(id)sender {
+    
+    MMCustomAlertView *alert = [[MMCustomAlertView alloc] initWithMessage:@"Hi there" backgroundColor:[UIColor blackColor] textColor:[UIColor blueColor] viewAlpha:0.8 animated:YES andDelegate:self];
+    [self.view addSubview:alert];
+}
 
 - (IBAction)buttonPressed:(id)sender {
-    
-    MMCustomAlertView *alert = [[MMCustomAlertView alloc] initWithMessage:@"Hi there" backgroundColor:[UIColor blackColor] textColor:[UIColor blueColor] viewAlpha:0.9 animated:YES andDelegate:self];
-    [self.view addSubview:alert];
+   
 }
 -(void)MMCustomAlertViewOKButtonDelegate{
     
