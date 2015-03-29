@@ -53,7 +53,7 @@ That's it!
 
 If you don't need to perform an action when "OK" button is clicked just enter "nil" as delegate paramater.
 
-You can also customize the background color,the text color, the alpha of the view and the animation:
+You can also customize the background color, the text color, the alpha of the view and the animation:
 
 ```
 - (IBAction)showCustomAlert:(id)sender {
