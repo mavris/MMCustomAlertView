@@ -30,7 +30,7 @@
 }
 - (IBAction)showCustomAlert:(id)sender {
     
-    MMCustomAlertView *alert = [[MMCustomAlertView alloc] initWithMessage:@"Hi there" backgroundColor:[UIColor blackColor] textColor:[UIColor blueColor] viewAlpha:0.8 animated:YES andDelegate:self];
+    MMCustomAlertView *alert = [[MMCustomAlertView alloc]initWithMessage:@"Hi there" backgroundColor:[UIColor blackColor] textColor:[UIColor blueColor] viewAlpha:0.8 animated:YES andDelegate:self];
     [self.view addSubview:alert];
 }
 

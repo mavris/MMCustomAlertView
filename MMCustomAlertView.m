@@ -7,8 +7,20 @@
 
 #import "MMCustomAlertView.h"
 
-@implementation MMCustomAlertView
-@synthesize msgLabel,okButton,backgroundImageView,delegate;
+@interface MMCustomAlertView()
+
+@property (nonatomic, assign) id <MMCustomAlertViewDelegate> delegate;
+@property (nonatomic, strong) UILabel *msgLabel;
+@property (nonatomic, strong) UIButton *okButton;
+@property (nonatomic, strong) UIImageView *backgroundImageView;
+
+@end
+
+
+@implementation MMCustomAlertView{
+    
+    BOOL isAlertAnimated;
+}
 
 -(id)initWithMessage:(NSString*)msg andDelegate:(id<MMCustomAlertViewDelegate>)del{
     
@@ -20,27 +32,23 @@
         
         isAlertAnimated=YES;
 
-        self.alpha=0;
-        self.backgroundColor = [UIColor blackColor];
-
         [self addSubview:self.msgLabel];
         [self addSubview:self.okButton];
         
-        msgLabel.text=msg;
-        msgLabel.textColor=[UIColor whiteColor];
+        self.alpha=0;
+        self.backgroundColor = [UIColor blackColor];
         
-        okButton.tintColor=[UIColor whiteColor];
+        self.msgLabel.text=msg;
+        self.msgLabel.textColor=[UIColor whiteColor];
+        
+        self.okButton.tintColor=[UIColor whiteColor];
 
         [self setupConstraints];
         
     }
     
-    //animate the alpha of View
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                                    self.alpha=0.9;
-                                  }
-                     completion:^(BOOL finished){}];
+    //Animate the alpha of View
+    [UIView animateWithDuration:0.3 animations:^{self.alpha=0.9;} completion:^(BOOL finished){}];
     
     return self;
 }
@@ -54,38 +62,30 @@
         self.delegate=del;
         
         isAlertAnimated=isAnimated;
-        
-        self.alpha=0;
-        
-        self.backgroundColor = backgroundColor;
-
        
         [self addSubview:self.msgLabel];
         [self addSubview:self.okButton];
         
-        msgLabel.textColor=textColor;
-       
-        msgLabel.text=msg;
+        self.alpha=0;
+        self.backgroundColor = backgroundColor;
         
-        okButton.tintColor =textColor;
+        self.msgLabel.textColor=textColor;
+        self.msgLabel.text=msg;
+        
+        self.okButton.tintColor =textColor;
         
         [self setupConstraints];
         
     }
     
-    //check if the user want to animate the Alert View
+    //Check if the user want to animate the Alert View
     if (isAlertAnimated) {
-        
         //Animate the alpha of View
-        [UIView animateWithDuration:0.3
-                         animations:^{
-                                        self.alpha=alpha;
-                                     }
-                        completion:^(BOOL finished){}];
+        [UIView animateWithDuration:0.3 animations:^{self.alpha=alpha;} completion:^(BOOL finished){}];
     }
     else{
     
-            self.alpha=alpha;
+        self.alpha=alpha;
     }
     
     
@@ -94,36 +94,31 @@
 
 - (UILabel *)msgLabel {
     
-    if (msgLabel == nil) {
+    if (_msgLabel == nil) {
         
-        msgLabel = [[UILabel alloc] init];
-        msgLabel.numberOfLines=0;
-        [msgLabel sizeToFit];
-        [msgLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        msgLabel.backgroundColor = [UIColor clearColor];
-        msgLabel.textAlignment=NSTextAlignmentCenter;
-
+        _msgLabel = [[UILabel alloc] init];
+        [_msgLabel setNumberOfLines:0];
+        [_msgLabel sizeToFit];
+        [_msgLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_msgLabel setBackgroundColor:[UIColor clearColor]];
+        [_msgLabel setTextAlignment:NSTextAlignmentCenter];
     }
-    return msgLabel;
     
+  return _msgLabel;
 }
 - (UIButton *)okButton {
     
-    if (okButton == nil) {
+    if (_okButton == nil) {
         
-        okButton = [UIButton buttonWithType:UIButtonTypeSystem];
- 
-        [okButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-        
-        okButton.backgroundColor = [UIColor clearColor];
-        
-        [okButton setTitle:@"OK" forState:UIControlStateNormal];
-        
-        [okButton addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventTouchUpInside];
+         _okButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        [_okButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_okButton setBackgroundColor:[UIColor clearColor]];
+        [_okButton setTitle:@"OK" forState:UIControlStateNormal];
+        [_okButton addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventTouchUpInside];
         
     }
-    return okButton;
     
+    return _okButton;
 }
 
 -(void)buttonClicked{
@@ -138,7 +133,7 @@
                          }
                          completion:^(BOOL finished){
                              [self removeFromSuperview];
-                             [delegate MMCustomAlertViewOKButtonDelegate];
+                             [self.delegate MMCustomAlertViewOKButtonDelegate];
                          }];
 
         
@@ -146,7 +141,7 @@
     else{
         //Removing the alpha of View and call delegate
         [self removeFromSuperview];
-        [delegate MMCustomAlertViewOKButtonDelegate];
+        [self.delegate MMCustomAlertViewOKButtonDelegate];
     
     }
     
@@ -232,9 +227,6 @@
                                                      attribute:NSLayoutAttributeCenterY
                                                     multiplier:1.0
                                                       constant:0.0]];
-    
-
-    
 }
 
 @end
