@@ -68,6 +68,6 @@ You can also customize the background color, the text color, the alpha of the vi
 
 ###License
 
-Copyright Miksoft 2015
+Copyright Miksoft 2016
 
 Licensed under the MIT License
