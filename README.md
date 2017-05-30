@@ -4,18 +4,18 @@ MMCustomAlertView
 
 MMCuctomAlertView is customized full screen AlertView with flat design!
 
-###Features
+### Features
 
 + Flat design
 + Customizable
 + Compatbile with all iOS Devices
 + Easy to use
 
-###Configuration
+### Configuration
 
 + Add files in your Xcode project from: File-Add Files to YourProjectName-> Select MMCustomAlertView.m and MMCustomAlertView.h -> Click on "copy items if needed" -> OK
 
-###How to use it
+### How to use it
 
 Import the class in your class:
 
@@ -62,11 +62,11 @@ You can also customize the background color, the text color, the alpha of the vi
 }
 ```
 
-###Authors
+### Authors
 
 * Michael Mavris
 
-###License
+### License
 
 Copyright Miksoft 2016
 
